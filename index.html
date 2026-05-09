@@ -1,0 +1,160 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Score — A song the universe just composed for you</title>
+  <meta name="description" content="Each click pulls a fresh signed pulse from the NIST Randomness Beacon and turns those bits into a unique generative track — key, tempo, drums, bass, melody, and a real chord progression." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="aurora" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-mark">♪</span>
+      <span class="brand-name">Quantum Score</span>
+    </div>
+    <p class="tagline">A track no algorithm composed.</p>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Listen to a song that didn't exist a minute ago.</h1>
+      <p>
+        Press the button. Your browser pulls a fresh signed pulse from the
+        <a href="https://beacon.nist.gov/" target="_blank" rel="noreferrer">NIST Randomness
+        Beacon</a> — a public service that mixes entropy from independent hardware
+        sources, including commercial quantum random number generators, and binds it
+        with SHA-512 every minute. Those bits select the key, the chord progression,
+        the tempo, the drum patterns, the bassline, the melody, and the synth
+        timbres — every bit named in the provenance panel below.
+      </p>
+      <p>
+        Same pulse, same song, anywhere on Earth. A friend with the share link will
+        hear the exact composition you do — re-derived in their browser from the
+        same signed bytes. The song could not have existed before NIST emitted that
+        pulse.
+      </p>
+      <p class="intro-emphasis">
+        ~104 named bits picking from curated musical building blocks. Millions of
+        possible songs, every one harmonic and on-beat.
+      </p>
+    </section>
+
+    <section class="generator" aria-labelledby="generator-title">
+      <h2 id="generator-title">Pull a pulse</h2>
+      <button type="button" id="generate-btn">
+        <span class="btn-label">Compose from a quantum pulse</span>
+        <span class="btn-spinner" aria-hidden="true"></span>
+      </button>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="track-stage" id="track-stage" hidden>
+      <article class="track-card">
+        <div class="track-header">
+          <div>
+            <div class="track-eyebrow">NIST Randomness Beacon</div>
+            <div class="track-title" id="track-title">Pulse #—</div>
+          </div>
+          <div class="track-key-block">
+            <div class="track-key" id="track-key">— · — BPM</div>
+            <div class="track-prog" id="track-prog">—</div>
+          </div>
+        </div>
+
+        <div class="viz-wrap">
+          <canvas id="viz" aria-hidden="true"></canvas>
+        </div>
+
+        <div class="chord-strip" id="chord-strip"></div>
+
+        <div class="grid-wrap">
+          <div class="grid-labels">
+            <div>Kick</div>
+            <div>Snare</div>
+            <div>Hat</div>
+            <div>Bass</div>
+            <div>Lead</div>
+          </div>
+          <div class="grid" id="grid"></div>
+        </div>
+
+        <div class="track-meta" id="track-meta"></div>
+
+        <div class="transport">
+          <button class="play-btn" id="play-btn" type="button">
+            <span class="play-icon">▶</span>
+            <span class="play-label">Play</span>
+          </button>
+          <button class="copy-btn" id="copy-btn" type="button">Copy share link</button>
+          <span class="position" id="position">ready</span>
+        </div>
+      </article>
+
+      <aside class="provenance">
+        <h3>Provenance</h3>
+        <p class="provenance-lead">
+          This track was composed from these exact bits, fetched live from
+          <a id="pulse-link" href="#" target="_blank" rel="noreferrer">NIST pulse #—</a>:
+        </p>
+        <div class="bit-grid" id="bit-grid"></div>
+        <h4>How the bits became music</h4>
+        <ul class="allocation" id="allocation"></ul>
+        <p class="provenance-note">
+          Each "field → value" is the bit slice's integer value, used to <em>pick</em>
+          a key, scale, chord progression, drum pattern, rhythm template, and
+          chord-tone palette from curated musical options. The bits are physical;
+          every output is on-beat and harmonic by construction.
+        </p>
+      </aside>
+    </section>
+
+    <section class="explainer">
+      <h2>Why this matters</h2>
+      <div class="explainer-grid">
+        <div>
+          <h3>Most generative music is fake-random.</h3>
+          <p>
+            <code>Math.random()</code> is deterministic. Same seed, same song.
+            Generative music libraries that "feel" surprising are running PRNGs
+            you could replay byte-for-byte from any clock value.
+          </p>
+        </div>
+        <div>
+          <h3>Beacon bits can't be replayed.</h3>
+          <p>
+            Each NIST pulse mixes entropy from independent hardware sources
+            (including quantum RNGs) and is signed and chained to the previous
+            pulse. A pulse cannot be revised, predicted, or forged after the fact.
+          </p>
+        </div>
+        <div>
+          <h3>Random ≠ musical. Selection from the random fixes that.</h3>
+          <p>
+            Raw entropy mapped to per-step on/off doesn't groove. Quantum Score
+            uses bits to <em>select</em> between musical building blocks — chord
+            progressions, drum patterns, rhythm templates, chord-tone palettes —
+            so every output is harmonic and on-beat. The entropy is still
+            physical; the form is still musical.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>
+      Built for the Light Rider Qualification Contest.
+      Entropy source: <a href="https://beacon.nist.gov/" target="_blank" rel="noreferrer">NIST
+      Randomness Beacon v2</a>. CURBy quantum endpoint substituted with NIST while CURBy-Q is offline.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
